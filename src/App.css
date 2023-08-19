@@ -1,0 +1,13 @@
+.App {
+  background: #000;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drum-pad {
+  width: 100px;
+  height: 100px;
+  margin: 2px;
+}

@@ -1,6 +1,29 @@
+import React from "react";
+
 import "./App.css";
 
 function App() {
+  const [pressedKey, setPressedKey] = React.useState("");
+  const instruments = {
+    Q: "Heater-1",
+    W: "Heater-2",
+    E: "Heater-3",
+    A: "Heater-4",
+    S: "Clap",
+    D: "Open-HH",
+    Z: "Kick-n'-Hat",
+    X: "Kick",
+    C: "Closed-HH",
+  };
+
+  const keydownHandler = (e) => {
+    setPressedKey(e.code.replace(/^Key/, ""));
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("keydown", keydownHandler);
+  });
+
   return (
     <div className="App">
       <div id="drum-machine">
