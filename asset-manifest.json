@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-assignment-three/static/css/main.e4314e31.css",
+    "main.js": "/react-assignment-three/static/js/main.85f2901b.js",
+    "index.html": "/react-assignment-three/index.html",
+    "main.e4314e31.css.map": "/react-assignment-three/static/css/main.e4314e31.css.map",
+    "main.85f2901b.js.map": "/react-assignment-three/static/js/main.85f2901b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4314e31.css",
+    "static/js/main.85f2901b.js"
+  ]
+}
