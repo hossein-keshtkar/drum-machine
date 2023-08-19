@@ -4,6 +4,7 @@ import "./App.css";
 
 function App() {
   const [pressedKey, setPressedKey] = React.useState("");
+  const display = React.useRef();
   const instruments = {
     Q: "Heater-1",
     W: "Heater-2",
@@ -24,10 +25,15 @@ function App() {
     document.addEventListener("keydown", keydownHandler);
   });
 
+  React.useEffect(() => {
+    if (/[QWEASDZXC]/.test(pressedKey))
+      display.current.innerHTML = instruments[pressedKey];
+  }, [pressedKey]);
+
   return (
     <div className="App">
       <div id="drum-machine">
-        <div id="display"></div>
+        <div id="display" ref={display}></div>
         <div className="row">
           <button className="drum-pad">
             Q
