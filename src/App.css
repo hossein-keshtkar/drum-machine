@@ -1,14 +1,17 @@
 .App {
-  background: #000;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #000b1b;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%230613FE' stroke-width='5.1' stroke-opacity='0.35' %3E%3Ccircle fill='%23000B1B' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23000a19' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23000a18' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23000916' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23000815' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23000813' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23000711' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23000610' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%2300060e' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%2300050d' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%2300050b' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%2300040a' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23000308' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23000306' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23000205' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23000103' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23000102' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-.drum-pad {
-  width: 100px;
-  height: 100px;
+.drum-machine {
+  position: absolute;
+  top: 0;
 }
 
 #display {
