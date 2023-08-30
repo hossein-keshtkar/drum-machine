@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Howl } from "howler";
+
 import { KEY_DOWN } from "../constants/keywords";
 
 const RowOfBtns = ({ data, rowNum }) => {
@@ -40,17 +42,20 @@ const RowOfBtns = ({ data, rowNum }) => {
   };
 
   const clickHandler = (e) => {
-    e.target.children[0].play();
+    const audio = e.target.children[0].src;
+    // console.log(audio);
+
+    var sound = new Howl({
+      src: [data.soundLinks[0]],
+    });
+
+    sound.play();
   };
 
   const rewindHandler = () => {
     const audio = document.getElementById(pressedKey);
 
-    if (audio) {
-      audio.currentTime = 0;
-      // audio.pause();
-      // audio.play();
-    }
+    audio.currentTime = 0;
   };
 
   useEffect(() => {
