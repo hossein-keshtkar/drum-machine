@@ -4,8 +4,6 @@ import "../styles/Buttons.css";
 import RowOfBtns from "./RowOfBtns";
 
 const Buttons = () => {
-  const [pressedKey, setPressedKey] = useState("");
-
   const data = {
     soundLinks: [
       [
@@ -36,36 +34,11 @@ const Buttons = () => {
     ],
   };
 
-  const clickHandler = (e) => {
-    // refs.display.current.innerHTML = data.instruments[e.target.children[0].id];
-    e.target.children[0].play();
-    // e.target.className += " clicked";
-
-    // setTimeout(() => {
-    //   e.target.className = "drum-pad";
-    // }, 100);
-  };
-
-  const keydownHandler = (e) => {
-    setPressedKey(e.code.replace(/^Key/, ""));
-  };
-
-  React.useEffect(() => {
-    window.addEventListener("keydown", keydownHandler);
-
-    if (/[QWEASDZXC]/.test(pressedKey)) {
-      data.refs[pressedKey].current.click();
-      data.refs[pressedKey].current.children[0].play();
-    }
-
-    return () => window.removeEventListener("keydown", keydownHandler);
-  });
-
   return (
     <div className="buttons">
-      <RowOfBtns data={data} clickHandler={clickHandler} rowNum={0} />
-      <RowOfBtns data={data} clickHandler={clickHandler} rowNum={1} />
-      <RowOfBtns data={data} clickHandler={clickHandler} rowNum={2} />
+      <RowOfBtns data={data} rowNum={0} />
+      <RowOfBtns data={data} rowNum={1} />
+      <RowOfBtns data={data} rowNum={2} />
     </div>
   );
 };
