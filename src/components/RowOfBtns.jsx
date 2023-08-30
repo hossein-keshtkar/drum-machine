@@ -2,32 +2,33 @@ import React, { useEffect, useState, useRef } from "react";
 import { Howl } from "howler";
 
 import { KEY_DOWN } from "../constants/keywords";
+import kick from "../assets/Alchemist Kick 1.wav";
+import kick2 from "../assets/Alchemist Kick 2.wav";
 
-const RowOfBtns = ({ data, rowNum }) => {
+const RowOfBtns = ({
+  data: { keys, soundLinks, instruments, regEx },
+  rowNum,
+}) => {
   const [pressedKey, setPressedKey] = useState("");
 
-  const keys = [
-    data.keys[rowNum][0],
-    data.keys[rowNum][1],
-    data.keys[rowNum][2],
-  ];
+  const myKeys = [keys[rowNum][0], keys[rowNum][1], keys[rowNum][2]];
 
   const refs = {
-    [keys[0]]: useRef(),
-    [keys[1]]: useRef(),
-    [keys[2]]: useRef(),
+    [myKeys[0]]: useRef(),
+    [myKeys[1]]: useRef(),
+    [myKeys[2]]: useRef(),
   };
 
   const sounds = [
-    data.soundLinks[rowNum][0],
-    data.soundLinks[rowNum][1],
-    data.soundLinks[rowNum][2],
+    soundLinks[rowNum][0],
+    soundLinks[rowNum][1],
+    soundLinks[rowNum][2],
   ];
 
-  const instruments = [
-    data.instruments[rowNum][0],
-    data.instruments[rowNum][1],
-    data.instruments[rowNum][2],
+  const myInstruments = [
+    instruments[rowNum][0],
+    instruments[rowNum][1],
+    instruments[rowNum][2],
   ];
 
   const keydownHandler = (e) => {
@@ -38,15 +39,14 @@ const RowOfBtns = ({ data, rowNum }) => {
   const playAudioHandler = () => {
     const audio = document.getElementById(pressedKey);
 
-    audio && audio.play();
-  };
+    // audio.play();
 
-  const clickHandler = (e) => {
-    const audio = e.target.children[0].src;
-    // console.log(audio);
-
-    var sound = new Howl({
-      src: [data.soundLinks[0]],
+    const sound = new Howl({
+      src: [kick],
+      volume: 1,
+      onend: () => {
+        setPressedKey("");
+      },
     });
 
     sound.play();
@@ -56,14 +56,13 @@ const RowOfBtns = ({ data, rowNum }) => {
     const audio = document.getElementById(pressedKey);
 
     audio.currentTime = 0;
+    setPressedKey("");
   };
 
   useEffect(() => {
     window.addEventListener(KEY_DOWN, keydownHandler);
 
-    const regEx = data.regEx[0];
-
-    if (regEx.test(pressedKey) && refs[pressedKey]) {
+    if (regEx[0].test(pressedKey) && refs[pressedKey]) {
       refs[pressedKey].current.focus();
       playAudioHandler();
     }
@@ -73,29 +72,41 @@ const RowOfBtns = ({ data, rowNum }) => {
 
   return (
     <div className="row">
-      <button className="drum-pad" onClick={clickHandler} ref={refs[keys[0]]}>
-        {keys[0]}
+      <button
+        className="drum-pad"
+        onClick={playAudioHandler}
+        ref={refs[myKeys[0]]}
+      >
+        {myKeys[0]}
         <audio
           src={sounds[0]}
-          id={keys[0]}
+          id={myKeys[0]}
           onEnded={rewindHandler}
           preload="audio"
         ></audio>
       </button>
-      <button className="drum-pad" onClick={clickHandler} ref={refs[keys[1]]}>
-        {keys[1]}
+      <button
+        className="drum-pad"
+        onClick={playAudioHandler}
+        ref={refs[myKeys[1]]}
+      >
+        {myKeys[1]}
         <audio
           src={sounds[1]}
-          id={keys[1]}
+          id={myKeys[1]}
           onEnded={rewindHandler}
           preload="audio"
         ></audio>
       </button>
-      <button className="drum-pad" onClick={clickHandler} ref={refs[keys[2]]}>
-        {keys[2]}
+      <button
+        className="drum-pad"
+        onClick={playAudioHandler}
+        ref={refs[myKeys[2]]}
+      >
+        {myKeys[2]}
         <audio
           src={sounds[2]}
-          id={keys[2]}
+          id={myKeys[2]}
           onEnded={rewindHandler}
           preload="audio"
         ></audio>
