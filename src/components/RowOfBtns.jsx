@@ -34,22 +34,23 @@ const RowOfBtns = ({ data, rowNum }) => {
   };
 
   const playAudioHandler = () => {
-    refs[pressedKey].current.click();
-    refs[pressedKey].current.children[0].play();
+    const audio = document.getElementById(pressedKey);
+
+    audio && audio.play();
   };
 
   const clickHandler = (e) => {
-    // refs.display.current.innerHTML = data.instruments[e.target.children[0].id];
     e.target.children[0].play();
-    // e.target.className += " clicked";
-
-    // setTimeout(() => {
-    //   e.target.className = "drum-pad";
-    // }, 100);
   };
 
-  const rewindHandler = (e) => {
-    console.log(e);
+  const rewindHandler = () => {
+    const audio = document.getElementById(pressedKey);
+
+    if (audio) {
+      audio.currentTime = 0;
+      // audio.pause();
+      // audio.play();
+    }
   };
 
   useEffect(() => {
@@ -58,6 +59,7 @@ const RowOfBtns = ({ data, rowNum }) => {
     const regEx = /[QWEASDZXC]/;
 
     if (regEx.test(pressedKey) && refs[pressedKey]) {
+      refs[pressedKey].current.focus();
       playAudioHandler();
     }
 
@@ -72,11 +74,11 @@ const RowOfBtns = ({ data, rowNum }) => {
       </button>
       <button className="drum-pad" onClick={clickHandler} ref={refs[keys[1]]}>
         {keys[1]}
-        <audio src={sounds[1]} id={keys[1]}></audio>
+        <audio src={sounds[1]} id={keys[1]} onEnded={rewindHandler}></audio>
       </button>
       <button className="drum-pad" onClick={clickHandler} ref={refs[keys[2]]}>
         {keys[2]}
-        <audio src={sounds[2]} id={keys[2]}></audio>
+        <audio src={sounds[2]} id={keys[2]} onEnded={rewindHandler}></audio>
       </button>
     </div>
   );
