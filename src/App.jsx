@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <div id="drum-machine">
-        <div id="display" ref={displayRef}></div>
+        {/* <div id="display" ref={displayRef}></div> */}
         <Buttons />
       </div>
     </div>

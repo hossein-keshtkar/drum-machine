@@ -1,26 +1,24 @@
+import hiHat1 from "../assets/Alchemist HiHat 1.wav";
+import hiHat2 from "../assets/Alchemist HiHat 2.wav";
+import hiHat3 from "../assets/Alchemist HiHat 3.wav";
+import hiHat4 from "../assets/Alchemist HiHat 4.wav";
+import hiHat5 from "../assets/Alchemist HiHat 5.wav";
+import hiHat6 from "../assets/Alchemist HiHat 6.wav";
+import hiHat7 from "../assets/Alchemist HiHat 7.wav";
+import hiHat8 from "../assets/Alchemist HiHat 8.wav";
+import hiHat9 from "../assets/Alchemist HiHat 9.wav";
+
 export const data = {
   regEx: [/[QWEASDZXC]/],
   soundLinks: [
-    [
-      "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3",
-      "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3",
-      "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3",
-    ],
-    [
-      "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3",
-      "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3",
-      "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3",
-    ],
-    [
-      "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3",
-      "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3",
-      "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3",
-    ],
+    [hiHat1, hiHat2, hiHat3],
+    [hiHat4, hiHat5, hiHat6],
+    [hiHat7, hiHat8, hiHat9],
   ],
   instruments: [
-    ["Heater 1", "Heater 2", "Heater 3"],
-    ["Heater 4", "Clap", "Open HH"],
-    ["Kick n' Hat", "Kick", "Closed HH"],
+    ["HiHat 1", "HiHat 2", "HiHat 3"],
+    ["HiHat 4", "HiHat 5", "HiHat 6"],
+    ["HiHat 7", "HiHat 8", "HiHat 9"],
   ],
   keys: [
     ["Q", "W", "E"],

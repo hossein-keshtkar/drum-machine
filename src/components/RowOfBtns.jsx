@@ -2,69 +2,70 @@ import React, { useEffect, useState, useRef } from "react";
 import { Howl } from "howler";
 
 import { KEY_DOWN } from "../constants/keywords";
-import kick from "../assets/Alchemist Kick 1.wav";
-import kick2 from "../assets/Alchemist Kick 2.wav";
 
-const RowOfBtns = ({
-  data: { keys, soundLinks, instruments, regEx },
-  rowNum,
-}) => {
-  const [pressedKey, setPressedKey] = useState("");
+const RowOfBtns = ({ data, rowNum }) => {
+  const [pressedKey, setPressedKey] = useState(null);
 
-  const myKeys = [keys[rowNum][0], keys[rowNum][1], keys[rowNum][2]];
+  const keys = [
+    data.keys[rowNum][0],
+    data.keys[rowNum][1],
+    data.keys[rowNum][2],
+  ];
 
   const refs = {
-    [myKeys[0]]: useRef(),
-    [myKeys[1]]: useRef(),
-    [myKeys[2]]: useRef(),
+    [keys[0]]: useRef(),
+    [keys[1]]: useRef(),
+    [keys[2]]: useRef(),
   };
 
   const sounds = [
-    soundLinks[rowNum][0],
-    soundLinks[rowNum][1],
-    soundLinks[rowNum][2],
+    data.soundLinks[rowNum][0],
+    data.soundLinks[rowNum][1],
+    data.soundLinks[rowNum][2],
   ];
 
   const myInstruments = [
-    instruments[rowNum][0],
-    instruments[rowNum][1],
-    instruments[rowNum][2],
+    data.instruments[rowNum][0],
+    data.instruments[rowNum][1],
+    data.instruments[rowNum][2],
   ];
 
   const keydownHandler = (e) => {
     const regEx = /^Key/;
+
     setPressedKey(e.code.replace(regEx, ""));
   };
 
-  const playAudioHandler = () => {
-    const audio = document.getElementById(pressedKey);
-
-    // audio.play();
-
-    const sound = new Howl({
-      src: [kick],
-      volume: 1,
+  const playAudio = (audio, volume) => {
+    const newAudio = new Howl({
+      src: [audio],
+      volume,
       onend: () => {
-        setPressedKey("");
+        setPressedKey(null);
       },
     });
 
-    sound.play();
+    newAudio.play();
   };
 
-  const rewindHandler = () => {
-    const audio = document.getElementById(pressedKey);
+  const audioHandler = (e) => {
+    if (e) {
+      console.log(e);
+      const audio = e.target.children[0].src;
 
-    audio.currentTime = 0;
-    setPressedKey("");
+      playAudio(audio, 1);
+    } else {
+      const audio = document.getElementById(pressedKey).src;
+
+      playAudio(audio, 1);
+    }
   };
 
   useEffect(() => {
     window.addEventListener(KEY_DOWN, keydownHandler);
 
-    if (regEx[0].test(pressedKey) && refs[pressedKey]) {
-      refs[pressedKey].current.focus();
-      playAudioHandler();
+    if (data.regEx[0].test(pressedKey) && refs[pressedKey]) {
+      audioHandler();
     }
 
     return () => window.removeEventListener(KEY_DOWN, keydownHandler);
@@ -74,42 +75,27 @@ const RowOfBtns = ({
     <div className="row">
       <button
         className="drum-pad"
-        onClick={playAudioHandler}
-        ref={refs[myKeys[0]]}
+        onClick={audioHandler}
+        // ref={refs[keys[0]]}
       >
-        {myKeys[0]}
-        <audio
-          src={sounds[0]}
-          id={myKeys[0]}
-          onEnded={rewindHandler}
-          preload="audio"
-        ></audio>
+        {keys[0]}
+        <audio src={sounds[0]} id={keys[0]} preload="audio"></audio>
       </button>
       <button
         className="drum-pad"
-        onClick={playAudioHandler}
-        ref={refs[myKeys[1]]}
+        onClick={audioHandler}
+        // ref={refs[keys[1]]}
       >
-        {myKeys[1]}
-        <audio
-          src={sounds[1]}
-          id={myKeys[1]}
-          onEnded={rewindHandler}
-          preload="audio"
-        ></audio>
+        {keys[1]}
+        <audio src={sounds[1]} id={keys[1]} preload="audio"></audio>
       </button>
       <button
         className="drum-pad"
-        onClick={playAudioHandler}
-        ref={refs[myKeys[2]]}
+        onClick={audioHandler}
+        // ref={refs[keys[2]]}
       >
-        {myKeys[2]}
-        <audio
-          src={sounds[2]}
-          id={myKeys[2]}
-          onEnded={rewindHandler}
-          preload="audio"
-        ></audio>
+        {keys[2]}
+        <audio src={sounds[2]} id={keys[2]} preload="audio"></audio>
       </button>
     </div>
   );
