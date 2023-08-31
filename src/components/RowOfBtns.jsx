@@ -3,6 +3,7 @@ import { Howl } from "howler";
 
 import { KEY_DOWN } from "../constants/keywords";
 import { playAudio } from "../funcs/playAudio";
+import { keydownHandler } from "../funcs/keydownHandler";
 
 const RowOfBtns = ({ data, rowNum }) => {
   const [pressedKey, setPressedKey] = useState(null);
@@ -31,12 +32,6 @@ const RowOfBtns = ({ data, rowNum }) => {
     data.instruments[rowNum][2],
   ];
 
-  const keydownHandler = (e) => {
-    const regEx = /^Key/;
-
-    setPressedKey(e.code.replace(regEx, ""));
-  };
-
   const audioHandler = (e) => {
     if (e) {
       const audio = e.target.children[0].src;
@@ -50,7 +45,7 @@ const RowOfBtns = ({ data, rowNum }) => {
   };
 
   useEffect(() => {
-    window.addEventListener(KEY_DOWN, keydownHandler);
+    window.addEventListener(KEY_DOWN, (e) => keydownHandler(e, setPressedKey));
 
     if (data.regEx[0].test(pressedKey) && refs[pressedKey]) {
       audioHandler();
