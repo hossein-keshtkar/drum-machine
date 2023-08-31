@@ -5,16 +5,16 @@
   border-radius: 2px;
   height: 100px;
   width: 100px;
-  background: #111;
   color: #fff;
+  background: #191919;
 }
 
 .pad:active {
-  box-shadow: 0px 0px 5px 1px #5cf236;
+  box-shadow: 0px 0px 7px 1px #e31169;
 }
 
 .active {
-  box-shadow: 0px 0px 5px 1px #5cf236;
+  box-shadow: 0px 0px 7px 1px #1221ef;
 }
 
 .pad:focus-visible {
