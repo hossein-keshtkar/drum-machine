@@ -9,22 +9,25 @@
   flex-direction: column;
 
   background-color: #000000;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23FFFFFF' stroke-width='2.7' stroke-opacity='0.26' %3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23FFFFFF' stroke-width='2.7' stroke-opacity='0.09' %3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23000000' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
   background-attachment: fixed;
   background-size: cover;
 }
 
 #drum-pad {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #display {
-  height: 66px;
-  padding: 15px;
-  margin-bottom: 2px;
   text-align: center;
-  border-radius: 5px;
+}
+
+.volume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 footer {
@@ -32,4 +35,22 @@ footer {
   bottom: 30px;
   text-align: center;
   font-size: 12px;
+}
+
+code {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  #drum-pad {
+    flex-direction: row;
+  }
+
+  .volume {
+    flex-direction: row;
+  }
+
+  label {
+    margin-right: 10px;
+  }
 }
