@@ -1,0 +1,22 @@
+.pad {
+  font-weight: 600;
+  border: 0;
+  margin: 2px;
+  border-radius: 2px;
+  height: 100px;
+  width: 100px;
+  background: #111;
+  color: #fff;
+}
+
+.pad:active {
+  box-shadow: 0px 0px 5px 1px #5cf236;
+}
+
+.active {
+  box-shadow: 0px 0px 5px 1px #5cf236;
+}
+
+.pad:focus-visible {
+  outline: none;
+}

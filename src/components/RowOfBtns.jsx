@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { KEY_DOWN } from "../constants/keywords";
 import { playAudio } from "../funcs/playAudio";
 import { keydownHandler } from "../funcs/keydownHandler";
+import "../styles/RowOfBtns.css";
 
 const RowOfBtns = ({ data, rowNum }) => {
   const [pressedKey, setPressedKey] = useState(null);
@@ -47,6 +48,12 @@ const RowOfBtns = ({ data, rowNum }) => {
     window.addEventListener(KEY_DOWN, (e) => keydownHandler(e, setPressedKey));
 
     if (data.regEx[0].test(pressedKey) && refs[pressedKey]) {
+      refs[pressedKey].current.classList.add("active");
+
+      setTimeout(() => {
+        refs[pressedKey].current.classList.remove("active");
+      }, 100);
+
       audioHandler();
     }
 
@@ -55,27 +62,15 @@ const RowOfBtns = ({ data, rowNum }) => {
 
   return (
     <div className="row">
-      <button
-        className="drum-pad"
-        onClick={audioHandler}
-        // ref={refs[keys[0]]}
-      >
+      <button onClick={audioHandler} className="pad" ref={refs[keys[0]]}>
         {keys[0]}
         <audio src={sounds[0]} id={keys[0]} preload="audio"></audio>
       </button>
-      <button
-        className="drum-pad"
-        onClick={audioHandler}
-        // ref={refs[keys[1]]}
-      >
+      <button onClick={audioHandler} className="pad" ref={refs[keys[1]]}>
         {keys[1]}
         <audio src={sounds[1]} id={keys[1]} preload="audio"></audio>
       </button>
-      <button
-        className="drum-pad"
-        onClick={audioHandler}
-        // ref={refs[keys[2]]}
-      >
+      <button onClick={audioHandler} className="pad" ref={refs[keys[2]]}>
         {keys[2]}
         <audio src={sounds[2]} id={keys[2]} preload="audio"></audio>
       </button>

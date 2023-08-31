@@ -9,9 +9,9 @@
   background-size: cover;
 }
 
-.drum-machine {
-  position: absolute;
-  top: 0;
+#drum-pad {
+  display: flex;
+  flex-direction: row;
 }
 
 #display {

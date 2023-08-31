@@ -1,6 +1,5 @@
 import React from "react";
 
-import "../styles/Buttons.css";
 import RowOfBtns from "./RowOfBtns";
 
 const Buttons = ({ data }) => {
