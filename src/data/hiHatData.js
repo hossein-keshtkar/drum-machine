@@ -16,9 +16,9 @@ export const hiHatData = {
     [hiHat7, hiHat8, hiHat9],
   ],
   instruments: [
-    ["HiHat 1", "HiHat 2", "HiHat 3"],
-    ["HiHat 4", "HiHat 5", "HiHat 6"],
-    ["HiHat 7", "HiHat 8", "HiHat 9"],
+    ["Hi Hat 1", "Hi Hat 2", "Hi Hat 3"],
+    ["Hi Hat 4", "Hi Hat 5", "Hi Hat 6"],
+    ["Hi Hat 7", "Hi Hat 8", "Hi Hat 9"],
   ],
   keys: [
     ["Q", "W", "E"],

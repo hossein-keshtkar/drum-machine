@@ -16,9 +16,9 @@ export const kickData = {
     [kick7, kick8, kick9],
   ],
   instruments: [
-    ["HiHat 1", "HiHat 2", "HiHat 3"],
-    ["HiHat 4", "HiHat 5", "HiHat 6"],
-    ["HiHat 7", "HiHat 8", "HiHat 9"],
+    ["Kick 1", "Kick 2", "Kick 3"],
+    ["Kick 4", "Kick 5", "Kick 6"],
+    ["Kick 7", "Kick 8", "Kick 9"],
   ],
   keys: [
     ["U", "I", "O"],
