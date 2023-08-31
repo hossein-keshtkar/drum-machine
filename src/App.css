@@ -19,17 +19,6 @@
   flex-direction: column;
 }
 
-#display {
-  text-align: center;
-}
-
-.volume {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
 footer {
   position: absolute;
   bottom: 30px;
@@ -44,13 +33,5 @@ code {
 @media (min-width: 768px) {
   #drum-pad {
     flex-direction: row;
-  }
-
-  .volume {
-    flex-direction: row;
-  }
-
-  label {
-    margin-right: 10px;
   }
 }
