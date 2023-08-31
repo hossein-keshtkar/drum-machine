@@ -5,3 +5,4 @@ export const VOLUME = "VOLUME";
 export const DISPLAY = "DISPLAY";
 export const LIGHT = "LIGHT";
 export const DARK = "DARK";
+export const MODE = "MODE";

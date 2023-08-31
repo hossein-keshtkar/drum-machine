@@ -1,4 +1,4 @@
-import { DISPLAY, VOLUME } from "../constants/keywords";
+import { DISPLAY, VOLUME, MODE } from "../constants/keywords";
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -7,6 +7,9 @@ export const reducer = (state, action) => {
 
     case DISPLAY:
       return { ...state, display: action.payload };
+
+    case MODE:
+      return { ...state, mode: action.payload };
 
     default:
       return state;
