@@ -8,6 +8,7 @@ import { reducer } from "./manager/reducer";
 import { initState } from "./data/initState";
 import Display from "./components/Display";
 import Volume from "./components/Volume";
+import Context from "./manager/Context";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initState);
@@ -17,18 +18,20 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <code>Drum Pad</code>
-      <Display state={state} />
-      <Volume state={state} dispatch={dispatch} />
-      <div id="drum-pad">
-        <Buttons data={hiHatData} />
-        <Buttons data={kickData} />
+    <Context.Provider value={{ state, dispatch }}>
+      <div className="App">
+        <code>Drum Pad</code>
+        <Display state={state} />
+        <Volume state={state} dispatch={dispatch} />
+        <div id="drum-pad">
+          <Buttons data={hiHatData} />
+          <Buttons data={kickData} />
+        </div>
+        <footer>
+          Development by <em>Hossein Keshtkar</em> <br /> August 2023
+        </footer>
       </div>
-      <footer>
-        Development by <em>Hossein Keshtkar</em> <br /> August 2023
-      </footer>
-    </div>
+    </Context.Provider>
   );
 }
 
