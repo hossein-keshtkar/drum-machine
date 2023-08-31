@@ -8,7 +8,7 @@ import hiHat7 from "../assets/Alchemist HiHat 7.wav";
 import hiHat8 from "../assets/Alchemist HiHat 8.wav";
 import hiHat9 from "../assets/Alchemist HiHat 9.wav";
 
-export const data = {
+export const hiHatData = {
   regEx: [/[QWEASDZXC]/],
   soundLinks: [
     [hiHat1, hiHat2, hiHat3],

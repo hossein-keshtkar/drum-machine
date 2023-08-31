@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Howl } from "howler";
 
 import { KEY_DOWN } from "../constants/keywords";
 import { playAudio } from "../funcs/playAudio";
