@@ -1,23 +1,26 @@
-import React, { useRef } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 
 import "./App.css";
 import Buttons from "./components/Buttons";
 import { hiHatData } from "./data/hiHatData";
 import { kickData } from "./data/kickData";
+import { reducer } from "./manager/reducer";
+import { initState } from "./data/initState";
+import Display from "./components/Display";
+import Volume from "./components/Volume";
 
 function App() {
-  const displayRef = useRef();
+  const [state, dispatch] = useReducer(reducer, initState);
+
+  useEffect(() => {
+    document.title = "Drum Pad";
+  }, []);
 
   return (
     <div className="App">
       <code>Drum Pad</code>
-      <div id="display" ref={displayRef}>
-        <h1>Hello</h1>
-      </div>
-      <div className="volume">
-        <label htmlFor="range">Volume</label>
-        <input type="range" name="volume" id="range" max={1} min={0} />
-      </div>
+      <Display state={state} />
+      <Volume state={state} dispatch={dispatch} />
       <div id="drum-pad">
         <Buttons data={hiHatData} />
         <Buttons data={kickData} />
