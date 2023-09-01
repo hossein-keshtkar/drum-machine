@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useEffect, useReducer } from "react";
 
 import "./App.css";
 import Buttons from "./components/Buttons";
