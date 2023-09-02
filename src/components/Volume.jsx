@@ -1,26 +1,28 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { updateVolume } from "../manager/volumeSlice";
 import "../styles/Volume.css";
-import { VOLUME } from "../constants/keywords";
-import StateContext from "../manager/StateContext";
 
 const Volume = () => {
   console.log("Volume renders");
 
-  const {
-    state: { volume },
-    dispatch,
-  } = useContext(StateContext);
+  const dispatch = useDispatch();
 
-  const [rangeValue, setRengeValue] = useState(volume * 100);
+  const { volume } = useSelector((state) => state);
 
-  const changeHandler = useCallback((e) => {
-    const value = e.target.value;
+  const [rangeValue, setRengeValue] = useState(volume.value);
 
-    setRengeValue(value);
+  const changeHandler = useCallback(
+    (e) => {
+      const value = e.target.value;
 
-    dispatch({ type: VOLUME, payload: rangeValue / 100 });
-  }, []);
+      setRengeValue(value);
+
+      dispatch(updateVolume(rangeValue));
+    },
+    [rangeValue]
+  );
 
   return (
     <div className="volume">

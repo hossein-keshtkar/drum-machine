@@ -11,10 +11,11 @@ const displaySlice = createSlice({
 
   reducers: {
     displayInstrument: (state, action) => {
-      state.display += action.payload;
+      state.value = action.payload;
     },
   },
 });
 
 export const { displayInstrument } = displaySlice.actions;
+
 export default displaySlice.reducer;
