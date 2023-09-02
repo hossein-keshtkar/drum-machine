@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import "../styles/Volume.css";
 import { VOLUME } from "../constants/keywords";
@@ -6,19 +6,21 @@ import { VOLUME } from "../constants/keywords";
 const Volume = ({ state: { volume }, dispatch }) => {
   const [rangeValue, setRengeValue] = useState(volume * 100);
 
-  const changeHandler = (e) => {
+  console.log("Volume renders");
+
+  const volumeHandler = useCallback((e) => {
     const value = e.target.value;
 
     setRengeValue(value);
 
     dispatch({ type: VOLUME, payload: rangeValue / 100 });
-  };
+  },[]);
 
   return (
     <div className="volume">
       <label htmlFor="range">Volume</label>
       <input
-        onChange={changeHandler}
+        onChange={volumeHandler}
         value={rangeValue}
         type="range"
         name="volume"

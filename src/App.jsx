@@ -13,6 +13,8 @@ import Context from "./manager/Context";
 function App() {
   const [state, dispatch] = useReducer(reducer, initState);
 
+  console.log("App renders");
+
   useEffect(() => {
     document.title = "Drum Pad";
   }, []);
