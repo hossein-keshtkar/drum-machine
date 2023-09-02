@@ -2,11 +2,13 @@ import React, { useCallback, useContext, useState } from "react";
 
 import "../styles/Volume.css";
 import { VOLUME } from "../constants/keywords";
-import { Context } from "../manager/Provider";
+import Context from "../manager/Context";
 
 const Volume = () => {
-  const [state, dispatch] = useContext(Context);
-  const volume = state.volume;
+  const {
+    state: { volume },
+    dispatch,
+  } = useContext(Context);
 
   const [rangeValue, setRengeValue] = useState(volume * 100);
 
