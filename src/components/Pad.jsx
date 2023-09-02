@@ -1,15 +1,19 @@
 import React from "react";
 
-import RowOfBtns from "./RowOfBtns";
+import Row from "./Row";
 
-const Buttons = ({ data }) => {
+const Pad = () => {
+  console.log("pad renders");
+  
+  const rowNumbers = [0, 1, 2];
+
   return (
-    <div className="buttons">
-      <RowOfBtns data={data} rowNum={0} />
-      <RowOfBtns data={data} rowNum={1} />
-      <RowOfBtns data={data} rowNum={2} />
+    <div>
+      {rowNumbers.map((rowNum, index) => (
+        <Row key={index} rowNum={rowNum} />
+      ))}
     </div>
   );
 };
 
-export default Buttons;
+export default Pad;
