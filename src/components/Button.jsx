@@ -1,16 +1,19 @@
-import React, { useRef, memo, useEffect } from "react";
+import React, { useRef, memo, useEffect, useContext } from "react";
 
 // import { DISPLAY, KEY_DOWN } from "../constants/keywords";
 // import { playAudio } from "../funcs/playAudio";
 // import { keydownHandler } from "../funcs/keydownHandler";
 import "../styles/Button.css";
+import Context from "../manager/Context";
 
-const Button = ({ audio, id, key }) => {
+const Button = ({ audio, id }) => {
   // const [pressedKey, setPressedKey] = useState(null);
-  
+  const { state, dispatch } = useContext(Context);
+
   console.log("button renders");
 
   const btnRef = useRef();
+
   //   const dispatchDisplay = (e) => {
   //     if (e) {
   //       dispatch({ type: DISPLAY, payload: myInstruments[e.target.id] });
@@ -57,8 +60,7 @@ const Button = ({ audio, id, key }) => {
 
   return (
     <button onClick={taskHandler} className="button" ref={btnRef} id={id}>
-      {key}
-      <audio src={audio} id={key} preload="audio"></audio>
+      a<audio src={audio} preload="audio"></audio>
     </button>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 
 import "./App.css";
-import Buttons from "./components/Pad";
+import Pad from "./components/Pad";
 import { hiHatData } from "./data/hiHatData";
 import { kickData } from "./data/kickData";
 import Display from "./components/Display";
@@ -12,6 +12,7 @@ import Context from "./manager/Context";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initState);
+  console.log("App renders");
 
   useEffect(() => {
     document.title = "Drum Pad";
@@ -24,8 +25,8 @@ function App() {
         <Display />
         <Volume />
         <div id="drum-pad">
-          <Buttons data={hiHatData} />
-          <Buttons data={kickData} />
+          <Pad data={hiHatData} />
+          <Pad data={kickData} />
         </div>
         <footer>
           &copy;Development by <em>Hossein Keshtkar</em> <br /> August 2023

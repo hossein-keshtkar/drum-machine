@@ -5,6 +5,8 @@ import { VOLUME } from "../constants/keywords";
 import Context from "../manager/Context";
 
 const Volume = () => {
+  console.log("Volume renders");
+  
   const {
     state: { volume },
     dispatch,
