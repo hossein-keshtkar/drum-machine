@@ -9,7 +9,7 @@ import Volume from "./components/Volume";
 import Provider from "./manager/Provider";
 
 function App() {
-  console.log("App renders");
+  const [state, dispatch] = useReducer(reducer, initState);
 
   useEffect(() => {
     document.title = "Drum Pad";

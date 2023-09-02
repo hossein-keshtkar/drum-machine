@@ -7,12 +7,10 @@ import { Context } from "../manager/Provider";
 const Volume = () => {
   const [state, dispatch] = useContext(Context);
   const volume = state.volume;
-  
+
   const [rangeValue, setRengeValue] = useState(volume * 100);
 
-  console.log("Volume renders");
-
-  const volumeHandler = useCallback((e) => {
+  const changeHandler = useCallback((e) => {
     const value = e.target.value;
 
     setRengeValue(value);
@@ -24,7 +22,7 @@ const Volume = () => {
     <div className="volume">
       <label htmlFor="range">Volume</label>
       <input
-        onChange={volumeHandler}
+        onChange={changeHandler}
         value={rangeValue}
         type="range"
         name="volume"

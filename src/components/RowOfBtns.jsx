@@ -1,10 +1,15 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 
+import { DISPLAY, KEY_DOWN } from "../constants/keywords";
+import { playAudio } from "../funcs/playAudio";
+import { keydownHandler } from "../funcs/keydownHandler";
 import "../styles/RowOfBtns.css";
 import Context from "../manager/Provider";
 import Button from "./Button";
 
 const RowOfBtns = ({ data, rowNum }) => {
+  // const [pressedKey, setPressedKey] = useState(null);
+
   // const {
   //   state: { volume },
   //   dispatch,
@@ -33,12 +38,14 @@ const RowOfBtns = ({ data, rowNum }) => {
   //   data.instruments[rowNum][1],
   //   data.instruments[rowNum][2],
   // ];
+  
+  const btnIds = [0, 1, 2];
 
   return (
     <div className="row">
-      <Button />
-      <Button />
-      <Button />
+      {btnIds.map((id) => (
+        <Button id={id} />
+      ))}
     </div>
   );
 };
