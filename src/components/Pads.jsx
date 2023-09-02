@@ -6,8 +6,6 @@ import DataContext from "../manager/DataContext";
 import { mainData } from "../data/mainData";
 
 const Pads = () => {
-  console.log("pads renders");
-
   const padNums = [0, 1];
 
   return (
