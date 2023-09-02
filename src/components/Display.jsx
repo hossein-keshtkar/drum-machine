@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 
 import "../styles/Display.css";
 
-const Display = ({ state: { display } }) => {
+const Display = () => {
   const displayRef = useRef();
 
   return (
     <div id="display" ref={displayRef}>
-      <h1>{display}</h1>
+      <h1>Display</h1>
     </div>
   );
 };
