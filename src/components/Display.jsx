@@ -1,20 +1,18 @@
-import React, { useRef, memo, useContext } from "react";
+import React, { useRef, memo } from "react";
 
 import "../styles/Display.css";
-import Context from "../manager/StateContext";
+import { useSelector } from "react-redux";
 
 const Display = () => {
   console.log("Display renders");
 
-  const {
-    state: { display },
-  } = useContext(Context);
+  const { display } = useSelector((state) => state);
 
   const displayRef = useRef();
 
   return (
     <div id="display" ref={displayRef}>
-      <h1>{display}</h1>
+      <h1>{display.value}</h1>
     </div>
   );
 };

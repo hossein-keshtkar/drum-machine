@@ -1,26 +1,15 @@
-import React, {
-  useRef,
-  memo,
-  useContext,
-  useEffect,
-  useState,
-  useCallback,
-} from "react";
+import React, { useRef, memo, useContext } from "react";
 
 import { activeClassHandler } from "../funcs/activeClassHandler";
 import { playAudio } from "../funcs/playAudio";
-import { keyPressHandler } from "../funcs/keyPressHandler";
-import StateContext from "../manager/StateContext";
 import DataContext from "../manager/DataContext";
 import "../styles/Button.css";
-import { debounce } from "../funcs/debounce";
-import { DISPLAY } from "../constants/keywords";
+import { useDispatch } from "react-redux";
+import { displayInstrument } from "../manager/displaySlice";
 
 const Button = ({ padNum, rowNum, colNum }) => {
-  const {
-    state: { volume },
-    dispatch,
-  } = useContext(StateContext);
+  console.log("button renders");
+  const dispatch = useDispatch();
 
   const data = useContext(DataContext)[padNum][0];
   const instrument = data.instruments[rowNum][colNum];
@@ -32,11 +21,11 @@ const Button = ({ padNum, rowNum, colNum }) => {
   const btnRef = useRef();
 
   const audioHandler = () => {
-    playAudio(audio, volume);
+    playAudio(audio, 1);
   };
 
   const dispatchHandler = () => {
-    dispatch({ type: DISPLAY, payload: instrument });
+    dispatch(displayInstrument(instrument));
   };
 
   const taskHandler = () => {

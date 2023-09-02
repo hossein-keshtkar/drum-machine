@@ -9,10 +9,13 @@ import { onKeyPress } from "./funcs/onKeyPress";
 import { onKeyUp } from "./funcs/onKeyUp";
 import Pads from "./components/Pads";
 import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initState);
+  // const [state, dispatch] = useReducer(reducer, initState);
   const [pressedKey, setPressedKey] = useState(null);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = "Drum Machine";
@@ -24,6 +27,8 @@ function App() {
     onKeyUp(() => {
       setPressedKey(null);
     });
+
+    console.log(state);
   }, []);
 
   useEffect(() => {
