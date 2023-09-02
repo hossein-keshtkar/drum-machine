@@ -1,14 +1,16 @@
-import React, { useRef, memo, useEffect, useContext } from "react";
+import React, { useRef, memo, useContext } from "react";
 
 // import { DISPLAY, KEY_DOWN } from "../constants/keywords";
 // import { playAudio } from "../funcs/playAudio";
 // import { keydownHandler } from "../funcs/keydownHandler";
 import "../styles/Button.css";
-import Context from "../manager/Context";
+import StateContext from "../manager/StateContext";
+import DataContext from "../manager/DataContext";
 
 const Button = ({ audio, id }) => {
   // const [pressedKey, setPressedKey] = useState(null);
-  const { state, dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(StateContext);
+  const data = useContext(DataContext);
 
   console.log("button renders");
 

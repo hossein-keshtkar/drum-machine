@@ -1,14 +1,20 @@
-import React, { useRef, memo } from "react";
+import React, { useRef, memo, useContext } from "react";
 
 import "../styles/Display.css";
+import Context from "../manager/StateContext";
 
 const Display = () => {
-  const displayRef = useRef();
   console.log("Display renders");
+
+  const {
+    state: { display },
+  } = useContext(Context);
+
+  const displayRef = useRef();
 
   return (
     <div id="display" ref={displayRef}>
-      <h1>Display</h1>
+      <h1>{display}</h1>
     </div>
   );
 };
