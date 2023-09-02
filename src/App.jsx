@@ -12,7 +12,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initState);
 
   useEffect(() => {
-    document.title = "Drum Pad";
+    document.title = "Drum Machine";
   }, []);
 
   return (
@@ -23,7 +23,7 @@ function App() {
         <Volume />
         <Pads />
         <footer>
-          &copy;Development by <em>Hossein Keshtkar</em> <br /> August 2023
+          Development by <em>Hossein Keshtkar</em> <br /> August 2023
         </footer>
       </div>
     </StateContext.Provider>
