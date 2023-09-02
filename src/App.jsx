@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 
 import "./App.css";
-import Buttons from "./components/Buttons";
+import Buttons from "./components/Pad";
 import { hiHatData } from "./data/hiHatData";
 import { kickData } from "./data/kickData";
 import { reducer } from "./manager/reducer";
