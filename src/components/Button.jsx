@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
 
-const Button = () => {
+import "../styles/Button.css";
+
+const Button = ({ audio, id, key }) => {
+  console.log("button renders");
+
+  const btnRef = useRef();
+
+  const taskHandler = () => {};
+
   return (
-    <button onClick={taskHandler} className="pad" ref={refs[keys[0]]} id="0">
-      {keys[0]}
-      <audio src={sounds[0]} id={keys[0]} preload="audio"></audio>
+    <button onClick={taskHandler} className="button" ref={btnRef} id={id}>
+      {key}
+      <audio src={audio} id={key} preload="audio"></audio>
     </button>
   );
 };
 
-export default Button;
+export default React.memo(Button);
