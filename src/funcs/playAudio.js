@@ -1,12 +1,9 @@
 import { Howl } from "howler";
 
-export const playAudio = (audio, volume, callback) => {
+export const playAudio = (audio, volume) => {
   const newAudio = new Howl({
     src: [audio],
     volume,
-    onend: () => {
-      callback(null);
-    },
   });
 
   newAudio.play();

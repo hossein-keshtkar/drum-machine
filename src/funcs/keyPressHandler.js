@@ -1,6 +1,6 @@
 import { COMMA, PERIOD } from "../constants/keywords";
 
-export const keydownHandler = (e, callback) => {
+export const keyPressHandler = (e, callback) => {
   const regEx = /^Key/;
 
   if (regEx.test(e.code)) {

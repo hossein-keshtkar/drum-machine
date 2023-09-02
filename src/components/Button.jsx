@@ -5,24 +5,25 @@ import React, {
   useEffect,
   useState,
   useCallback,
-  useMemo,
 } from "react";
 
-import { DISPLAY, KEY_DOWN } from "../constants/keywords";
+import { DISPLAY, KEY_PRESS, KEY_UP } from "../constants/keywords";
+import { activeClassHandler } from "../funcs/activeClassHandler";
 import { playAudio } from "../funcs/playAudio";
-import { keydownHandler } from "../funcs/keydownHandler";
-import "../styles/Button.css";
+import { keyPressHandler } from "../funcs/keyPressHandler";
 import StateContext from "../manager/StateContext";
 import DataContext from "../manager/DataContext";
+import "../styles/Button.css";
 
 const Button = ({ padNum, rowNum, colNum }) => {
   const {
     state: { volume },
     dispatch,
   } = useContext(StateContext);
-  const [pressedKey, setPressedKey] = useState(null);
-  const data = useContext(DataContext)[padNum][0];
 
+  const [pressedKey, setPressedKey] = useState(null);
+
+  const data = useContext(DataContext)[padNum][0];
   const instrument = data.instruments[rowNum][colNum];
   const audio = data.soundLinks[rowNum][colNum];
   const key = data.keys[rowNum][colNum];
@@ -32,32 +33,36 @@ const Button = ({ padNum, rowNum, colNum }) => {
   const btnRef = useRef();
 
   const audioHandler = () => {
-    playAudio(audio, volume, setPressedKey);
+    playAudio(audio, volume);
   };
 
-  const dispatchHandler = () => {
+  const dispatchHandler = useCallback(() => {
     dispatch({ type: DISPLAY, payload: instrument });
-  };
+  }, [pressedKey]);
 
   const taskHandler = () => {
     dispatchHandler();
     audioHandler();
   };
 
-  useMemo(() => {
-    window.addEventListener(KEY_DOWN, (e) => keydownHandler(e, setPressedKey));
+  useEffect(() => {
+    window.addEventListener(KEY_PRESS, (e) =>
+      keyPressHandler(e, setPressedKey)
+    );
 
     if (pressedKey && pressedKey.toUpperCase() === key) {
-      btnRef.current.classList.add("active");
-
-      setTimeout(() => {
-        btnRef.current.classList.remove("active");
-      }, 200);
-
+      activeClassHandler(btnRef);
       taskHandler();
+      console.log("listener");
     }
 
-    return () => window.removeEventListener(KEY_DOWN, keydownHandler);
+    return () => window.removeEventListener(KEY_PRESS, keyPressHandler);
+  }, [pressedKey]);
+
+  useEffect(() => {
+    window.addEventListener(KEY_UP, () => setPressedKey(""));
+
+    return () => window.removeEventListener(KEY_UP, setPressedKey);
   }, [pressedKey]);
 
   return (
