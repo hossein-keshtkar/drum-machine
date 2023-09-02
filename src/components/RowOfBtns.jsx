@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 
 import "../styles/RowOfBtns.css";
-import Context from "../manager/Context";
+import Context from "../manager/Provider";
 import Button from "./Button";
 
 const RowOfBtns = ({ data, rowNum }) => {

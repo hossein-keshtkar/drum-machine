@@ -1,18 +1,14 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect } from "react";
 
 import "./App.css";
 import Buttons from "./components/Pad";
 import { hiHatData } from "./data/hiHatData";
 import { kickData } from "./data/kickData";
-import { reducer } from "./manager/reducer";
-import { initState } from "./data/initState";
 import Display from "./components/Display";
 import Volume from "./components/Volume";
-import Context from "./manager/Context";
+import Provider from "./manager/Provider";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initState);
-
   console.log("App renders");
 
   useEffect(() => {
@@ -20,7 +16,7 @@ function App() {
   }, []);
 
   return (
-    <Context.Provider value={{ state, dispatch }}>
+    <Provider>
       <div className="App">
         <code>Drum Pad</code>
         <Display state={state} />
@@ -33,7 +29,7 @@ function App() {
           Development by <em>Hossein Keshtkar</em> <br /> August 2023
         </footer>
       </div>
-    </Context.Provider>
+    </Provider>
   );
 }
 
