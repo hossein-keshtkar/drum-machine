@@ -10,7 +10,6 @@ import hiHat9 from "../assets/Alchemist HiHat 9.wav";
 
 export const hiHatData = [
   {
-    regEx: [/[QWEASDZXC]/],
     soundLinks: [
       [hiHat1, hiHat2, hiHat3],
       [hiHat4, hiHat5, hiHat6],

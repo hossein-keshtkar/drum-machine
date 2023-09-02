@@ -10,7 +10,6 @@ import kick9 from "../assets/Alchemist Kick 9.wav";
 
 export const kickData = [
   {
-    regEx: [/[UIOJKLM,.]/],
     soundLinks: [
       [kick1, kick2, kick3],
       [kick4, kick5, kick6],

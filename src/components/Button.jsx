@@ -1,68 +1,69 @@
-import React, { useRef, memo, useContext } from "react";
+import React, {
+  useRef,
+  memo,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+} from "react";
 
-// import { DISPLAY, KEY_DOWN } from "../constants/keywords";
-// import { playAudio } from "../funcs/playAudio";
-// import { keydownHandler } from "../funcs/keydownHandler";
+import { DISPLAY, KEY_DOWN } from "../constants/keywords";
+import { playAudio } from "../funcs/playAudio";
+import { keydownHandler } from "../funcs/keydownHandler";
 import "../styles/Button.css";
 import StateContext from "../manager/StateContext";
 import DataContext from "../manager/DataContext";
 
-const Button = ({ audio, id }) => {
-  // const [pressedKey, setPressedKey] = useState(null);
-  const { state, dispatch } = useContext(StateContext);
-  const data = useContext(DataContext);
+const Button = ({ padNum, rowNum, colNum }) => {
+  const {
+    state: { volume },
+    dispatch,
+  } = useContext(StateContext);
+  const [pressedKey, setPressedKey] = useState(null);
+  const data = useContext(DataContext)[padNum][0];
+
+  const instrument = data.instruments[rowNum][colNum];
+  const audio = data.soundLinks[rowNum][colNum];
+  const key = data.keys[rowNum][colNum];
 
   console.log("button renders");
 
   const btnRef = useRef();
 
-  //   const dispatchDisplay = (e) => {
-  //     if (e) {
-  //       dispatch({ type: DISPLAY, payload: myInstruments[e.target.id] });
-  //     } else {
-  //       dispatch({
-  //         type: DISPLAY,
-  //         payload: myInstruments[refs[pressedKey].current.id],
-  //       });
-  //     }
-  //   };
-
-  //   const audioHandler = (e) => {
-  //     if (e) {
-  //       const audio = e.target.children[0].src;
-
-  //       playAudio(audio, volume, setPressedKey);
-  //     } else {
-  //       const audio = document.getElementById(pressedKey).src;
-
-  //       playAudio(audio, volume, setPressedKey);
-  //     }
-  //   };
-
-  const taskHandler = (e) => {
-    // dispatchDisplay(e);
-    // audioHandler(e);
+  const audioHandler = () => {
+    playAudio(audio, volume, setPressedKey);
   };
 
-  //   useEffect(() => {
-  //     window.addEventListener(KEY_DOWN, (e) => keydownHandler(e, setPressedKey));
+  const dispatchHandler = () => {
+    dispatch({ type: DISPLAY, payload: instrument });
+  };
 
-  //     if (data.regEx[0].test(pressedKey) && refs[pressedKey]) {
-  //       refs[pressedKey].current.classList.add("active");
+  const taskHandler = () => {
+    dispatchHandler();
+    audioHandler();
+  };
 
-  //       setTimeout(() => {
-  //         refs[pressedKey].current.classList.remove("active");
-  //       }, 200);
+  useMemo(() => {
+    window.addEventListener(KEY_DOWN, (e) => keydownHandler(e, setPressedKey));
 
-  //       audioHandler();
-  //     }
+    if (pressedKey && pressedKey.toUpperCase() === key) {
+      btnRef.current.classList.add("active");
 
-  //     return () => window.removeEventListener(KEY_DOWN, keydownHandler);
-  //   });
+      setTimeout(() => {
+        btnRef.current.classList.remove("active");
+      }, 200);
+
+      taskHandler();
+    }
+
+    return () => window.removeEventListener(KEY_DOWN, keydownHandler);
+  }, [pressedKey]);
 
   return (
-    <button onClick={taskHandler} className="button" ref={btnRef} id={id}>
-      a<audio src={audio} preload="audio"></audio>
+    <button onClick={taskHandler} className="button" ref={btnRef} id={key}>
+      {key}
+      <audio src={audio} preload="audio"></audio>
     </button>
   );
 };
