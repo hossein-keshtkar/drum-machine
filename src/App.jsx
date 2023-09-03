@@ -17,6 +17,8 @@ function App() {
 
     onKeyPress((e) => {
       setPressedKey(e.key);
+
+      console.log(pressedKey);
     });
 
     onKeyUp(() => {
@@ -25,7 +27,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(pressedKey);
+    if (!pressedKey) return;
+
+    const btn = document.getElementById(pressedKey.toUpperCase());
+
+    btn.click();
   }, [pressedKey]);
 
   return (
