@@ -12,13 +12,15 @@ function App() {
 
   const [pressedKey, setPressedKey] = useState(null);
 
+  const regEx = /[qweasdzxcuiojklm,.]/i;
+
   useEffect(() => {
     document.title = "Drum Machine";
 
     onKeyPress((e) => {
-      setPressedKey(e.key);
+      document.getElementById("range").blur();
 
-      console.log(pressedKey);
+      if (regEx.test(e.key)) setPressedKey(e.key);
     });
 
     onKeyUp(() => {

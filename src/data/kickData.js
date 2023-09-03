@@ -1,3 +1,4 @@
+// kick 2 and kick 9 where the same
 import kick1 from "../assets/Alchemist Kick 1.wav";
 import kick2 from "../assets/Alchemist Kick 2.wav";
 import kick3 from "../assets/Alchemist Kick 3.wav";
@@ -6,7 +7,7 @@ import kick5 from "../assets/Alchemist Kick 5.wav";
 import kick6 from "../assets/Alchemist Kick 6.wav";
 import kick7 from "../assets/Alchemist Kick 7.wav";
 import kick8 from "../assets/Alchemist Kick 8.wav";
-import kick9 from "../assets/Alchemist Kick 9.wav";
+import kick9 from "../assets/Alchemist Kick 10.wav";
 
 export const kickData = [
   {

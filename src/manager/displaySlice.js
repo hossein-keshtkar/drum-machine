@@ -6,7 +6,7 @@ const displaySlice = createSlice({
   name: DISPLAY,
 
   initialState: {
-    value: "Display",
+    value: "",
   },
 
   reducers: {
