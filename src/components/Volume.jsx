@@ -1,8 +1,7 @@
-import React, { useCallback, useState, memo } from "react";
+import React, { useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateVolume } from "../manager/volumeSlice";
-import { debounce } from "../funcs/debounce";
 import "../styles/Volume.css";
 
 const Volume = () => {
@@ -21,7 +20,7 @@ const Volume = () => {
   const handleDispatch = () => {
     dispatch(updateVolume(rangeValue));
   };
-  
+
   return (
     <div className="volume">
       <label htmlFor="range">Volume</label>

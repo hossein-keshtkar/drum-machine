@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import Display from "./components/Display";
 import Volume from "./components/Volume";
@@ -9,6 +8,8 @@ import Pads from "./components/Pads";
 import "./App.css";
 
 function App() {
+  console.log("App renders");
+
   const [pressedKey, setPressedKey] = useState(null);
 
   useEffect(() => {

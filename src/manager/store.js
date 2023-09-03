@@ -1,12 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import displaySliceReducer from "./displaySlice";
-import modeSliceReducer from "./modeSlice";
-import volumeSliceReducer from "./volumeSlice";
+
+import displayReducer from "./displaySlice";
+import modeReducer from "./modeSlice";
+import volumeReducer from "./volumeSlice";
+import keyReducer from "./keySlice";
 
 export const store = configureStore({
   reducer: {
-    mode: modeSliceReducer,
-    display: displaySliceReducer,
-    volume: volumeSliceReducer,
+    mode: modeReducer,
+    display: displayReducer,
+    volume: volumeReducer,
+    key: keyReducer
   },
 });
