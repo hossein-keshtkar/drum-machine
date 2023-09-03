@@ -7,7 +7,6 @@ import { LIGHT } from "../constants/keywords";
 import { darkMode, lightMode } from "../manager/modeSlice";
 
 const Mode = () => {
-  console.log("Mode renders");
   const { value } = useSelector((state) => state.mode);
 
   const [isClicked, setIsClicked] = useState(false);

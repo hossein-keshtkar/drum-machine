@@ -12,8 +12,6 @@ import styles from "./styles/App.module.css";
 import Mode from "./components/Mode";
 
 function App() {
-  console.log("App renders");
-
   const [pressedKey, setPressedKey] = useState(null);
   const mode = useSelector((state) => state.mode);
 
