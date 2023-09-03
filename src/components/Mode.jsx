@@ -13,9 +13,7 @@ const Mode = () => {
 
   const dispatch = useDispatch();
 
-  const style = {
-    borderColor: value === LIGHT ? "#000" : "#fff",
-  };
+  const className = `${styles.btn} ${isClicked ? styles.isClicked : ""}`;
 
   const onClickHandler = () => {
     dispatch(value === LIGHT ? darkMode() : lightMode());
@@ -23,13 +21,13 @@ const Mode = () => {
   };
 
   return (
-    <div
-      onClick={onClickHandler}
-      className={styles.container}
-      //   style={style}
-    >
-      <div className={`${styles.btn} ${isClicked ? styles.isClicked : ""}`}>
-        {value === LIGHT ? <BsFillSunFill /> : <BsFillMoonStarsFill />}
+    <div onClick={onClickHandler} className={styles.container}>
+      <div className={className}>
+        {value === LIGHT ? (
+          <BsFillSunFill size={12} />
+        ) : (
+          <BsFillMoonStarsFill size={10} />
+        )}
       </div>
     </div>
   );

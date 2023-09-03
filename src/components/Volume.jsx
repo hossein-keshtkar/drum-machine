@@ -2,12 +2,10 @@ import React, { useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateVolume } from "../manager/volumeSlice";
-import "../styles/Volume.css";
+import styles from "../styles/Volume.module.css";
 import { RANGE } from "../constants/keywords";
 
 const Volume = () => {
-  console.log("Volume renders");
-
   const dispatch = useDispatch();
 
   const { value } = useSelector((state) => state.volume);
@@ -23,7 +21,7 @@ const Volume = () => {
   };
 
   return (
-    <div className="volume">
+    <div className={styles.volume}>
       <label htmlFor="range">Volume</label>
       <input
         onBlur={handleDispatch}

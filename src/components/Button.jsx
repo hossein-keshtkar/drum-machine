@@ -8,8 +8,6 @@ import DataContext from "../manager/DataContext";
 import "../styles/Button.css";
 
 const Button = ({ padNum, rowNum, colNum }) => {
-  console.log("button renders");
-
   const { value } = useSelector((state) => state.volume);
   const dispatch = useDispatch();
   const btnRef = useRef();
@@ -34,7 +32,7 @@ const Button = ({ padNum, rowNum, colNum }) => {
   }, [value]);
 
   return (
-    <button onClick={taskHandler} className="button" ref={btnRef} id={key}>
+    <button className="button" onClick={taskHandler} ref={btnRef} id={key}>
       {key}
       <audio src={audio} preload="auto"></audio>
     </button>

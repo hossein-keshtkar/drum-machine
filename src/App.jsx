@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import Display from "./components/Display";
 import Volume from "./components/Volume";
@@ -7,15 +8,18 @@ import { onKeyUp } from "./funcs/onKeyUp";
 import Pads from "./components/Pads";
 import { APP_NAME, LIGHT, RANGE } from "./constants/keywords";
 import { regEx } from "./data/keyboardKeys";
-import "./App.css";
+import styles from "./styles/App.module.css";
 import Mode from "./components/Mode";
-import { useSelector } from "react-redux";
 
 function App() {
   console.log("App renders");
 
   const [pressedKey, setPressedKey] = useState(null);
   const mode = useSelector((state) => state.mode);
+
+  const className = `${styles.app} ${
+    mode.value === LIGHT ? styles.light : styles.dark
+  }`;
 
   useEffect(() => {
     document.title = APP_NAME;
@@ -38,7 +42,7 @@ function App() {
   }, [pressedKey]);
 
   return (
-    <div className={`App ${mode.value === LIGHT ? "App-light" : "App-dark"}`}>
+    <div className={className}>
       <code>{APP_NAME}</code>
       <Mode />
       <Display />
