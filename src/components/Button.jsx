@@ -35,7 +35,7 @@ const Button = ({ padNum, rowNum, colNum }) => {
     activeClassHandler(btnRef);
     dispatchHandler();
     audioHandler();
-  }, [value]);
+  }, [value, instrument]);
 
   return (
     <button onClick={taskHandler} className="button" ref={btnRef} id={key}>
