@@ -1,8 +1,9 @@
 {
-  "name": "react-assignment-three",
-  "homepage": "https://hossein-keshtkar.github.io/react-assignment-three",
+  "name": "drum-machine",
+  "homepage": "https://hossein-keshtkar.github.io/drum-machine",
   "version": "0.1.0",
   "private": true,
+  "author": "Hossein-Keshtkar",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
