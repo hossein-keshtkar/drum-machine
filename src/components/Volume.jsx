@@ -2,6 +2,7 @@ import React, { useCallback, useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateVolume } from "../manager/volumeSlice";
+import { debounce } from "../funcs/debounce";
 import "../styles/Volume.css";
 
 const Volume = () => {
@@ -14,17 +15,19 @@ const Volume = () => {
   const [rangeValue, setRangeValue] = useState(value);
 
   const handleOnChange = (e) => {
-    setRangeValue(e.target.value);
+    setRangeValue(+e.target.value);
   };
 
-  React.useEffect(() => {
+  const handleDispatch = () => {
     dispatch(updateVolume(rangeValue));
-  }, [rangeValue]);
-
+  };
+  
   return (
     <div className="volume">
       <label htmlFor="range">Volume</label>
       <input
+        onBlur={handleDispatch}
+        onTouchEnd={handleDispatch}
         onChange={handleOnChange}
         value={rangeValue}
         type="range"
