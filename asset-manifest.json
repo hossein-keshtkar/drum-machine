@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/drum-machine/static/css/main.9b83f42d.css",
-    "main.js": "/drum-machine/static/js/main.3e633162.js",
+    "main.js": "/drum-machine/static/js/main.be79caa2.js",
     "static/media/Alchemist Kick 6.wav": "/drum-machine/static/media/Alchemist Kick 6.d1f949eb26ffa796be0e.wav",
     "static/media/Alchemist Kick 5.wav": "/drum-machine/static/media/Alchemist Kick 5.ffd9e89b267ab110008f.wav",
     "static/media/Alchemist Kick 1.wav": "/drum-machine/static/media/Alchemist Kick 1.b7ac6ed6e08a6b960ccc.wav",
@@ -22,10 +22,10 @@
     "static/media/Alchemist HiHat 8.wav": "/drum-machine/static/media/Alchemist HiHat 8.18dde5114c5d6307e356.wav",
     "index.html": "/drum-machine/index.html",
     "main.9b83f42d.css.map": "/drum-machine/static/css/main.9b83f42d.css.map",
-    "main.3e633162.js.map": "/drum-machine/static/js/main.3e633162.js.map"
+    "main.be79caa2.js.map": "/drum-machine/static/js/main.be79caa2.js.map"
   },
   "entrypoints": [
     "static/css/main.9b83f42d.css",
-    "static/js/main.3e633162.js"
+    "static/js/main.be79caa2.js"
   ]
 }
