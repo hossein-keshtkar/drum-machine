@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 
@@ -7,6 +7,7 @@ import { LIGHT } from "../constants/keywords";
 import { darkMode, lightMode } from "../manager/modeSlice";
 
 const Mode = () => {
+  console.log("Mode renders");
   const { value } = useSelector((state) => state.mode);
 
   const [isClicked, setIsClicked] = useState(false);
@@ -33,4 +34,4 @@ const Mode = () => {
   );
 };
 
-export default Mode;
+export default memo(Mode);
