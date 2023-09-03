@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateVolume } from "../manager/volumeSlice";
@@ -9,26 +9,23 @@ const Volume = () => {
 
   const dispatch = useDispatch();
 
-  const { volume } = useSelector((state) => state);
+  const { value } = useSelector((state) => state.volume);
 
-  const [rangeValue, setRengeValue] = useState(volume.value);
+  const [rangeValue, setRangeValue] = useState(value);
 
-  const changeHandler = useCallback(
-    (e) => {
-      const value = e.target.value;
+  const handleOnChange = (e) => {
+    setRangeValue(e.target.value);
+  };
 
-      setRengeValue(value);
-
-      dispatch(updateVolume(rangeValue));
-    },
-    [rangeValue]
-  );
+  React.useEffect(() => {
+    dispatch(updateVolume(rangeValue));
+  }, [rangeValue]);
 
   return (
     <div className="volume">
       <label htmlFor="range">Volume</label>
       <input
-        onChange={changeHandler}
+        onChange={handleOnChange}
         value={rangeValue}
         type="range"
         name="volume"
@@ -40,4 +37,4 @@ const Volume = () => {
   );
 };
 
-export default Volume;
+export default memo(Volume);

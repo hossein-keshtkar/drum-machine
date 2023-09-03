@@ -23,9 +23,9 @@ const Button = ({ padNum, rowNum, colNum }) => {
 
   const btnRef = useRef();
 
-  const audioHandler = useCallback(() => {
+  const audioHandler = () => {
     playAudio(audio, value / 100);
-  }, [value]);
+  };
 
   const dispatchHandler = () => {
     dispatch(displayInstrument(instrument));
@@ -35,7 +35,7 @@ const Button = ({ padNum, rowNum, colNum }) => {
     activeClassHandler(btnRef);
     dispatchHandler();
     audioHandler();
-  }, []);
+  }, [value]);
 
   return (
     <button onClick={taskHandler} className="button" ref={btnRef} id={key}>

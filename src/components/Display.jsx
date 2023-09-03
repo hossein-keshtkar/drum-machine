@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const Display = () => {
   console.log("Display renders");
 
-  const { display } = useSelector((state) => state);
+  const display = useSelector((state) => state.display);
 
   const displayRef = useRef();
 
