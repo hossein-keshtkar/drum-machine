@@ -5,20 +5,23 @@ import Volume from "./components/Volume";
 import { onKeyPress } from "./funcs/onKeyPress";
 import { onKeyUp } from "./funcs/onKeyUp";
 import Pads from "./components/Pads";
+import { APP_NAME, LIGHT, RANGE } from "./constants/keywords";
+import { regEx } from "./data/keyboardKeys";
 import "./App.css";
+import Mode from "./components/Mode";
+import { useSelector } from "react-redux";
 
 function App() {
   console.log("App renders");
 
   const [pressedKey, setPressedKey] = useState(null);
-
-  const regEx = /[qweasdzxcuiojklm,.]/i;
+  const mode = useSelector((state) => state.mode);
 
   useEffect(() => {
-    document.title = "Drum Machine";
+    document.title = APP_NAME;
 
     onKeyPress((e) => {
-      document.getElementById("range").blur();
+      document.getElementById(RANGE).blur();
 
       if (regEx.test(e.key)) setPressedKey(e.key);
     });
@@ -31,14 +34,13 @@ function App() {
   useEffect(() => {
     if (!pressedKey) return;
 
-    const btn = document.getElementById(pressedKey.toUpperCase());
-
-    btn.click();
+    document.getElementById(pressedKey.toUpperCase()).click();
   }, [pressedKey]);
 
   return (
-    <div className="App">
-      <code>Drum Pad</code>
+    <div className={`App ${mode.value === LIGHT ? "App-light" : "App-dark"}`}>
+      <code>{APP_NAME}</code>
+      <Mode />
       <Display />
       <Volume />
       <Pads />

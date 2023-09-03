@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { updateVolume } from "../manager/volumeSlice";
 import "../styles/Volume.css";
+import { RANGE } from "../constants/keywords";
 
 const Volume = () => {
   console.log("Volume renders");
@@ -31,7 +32,7 @@ const Volume = () => {
         value={rangeValue}
         type="range"
         name="volume"
-        id="range"
+        id={RANGE}
         max={100}
         min={0}
       />

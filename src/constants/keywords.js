@@ -8,3 +8,5 @@ export const LIGHT = "LIGHT";
 export const DARK = "DARK";
 export const MODE = "MODE";
 export const ACTIVE = "active";
+export const RANGE = "RANGE";
+export const APP_NAME = "Drum Machine";

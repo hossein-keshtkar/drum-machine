@@ -10,11 +10,11 @@ const modeSlice = createSlice({
 
   reducers: {
     lightMode: (state) => {
-      state.mode = LIGHT;
+      state.value = LIGHT;
     },
 
     darkMode: (state) => {
-      state.mode = DARK;
+      state.value = DARK;
     },
   },
 });
